@@ -23,9 +23,45 @@ Diese Dokumentation behandelt unsere Vorgehensweise beim Softwareprojekt "Name".
 
 \section{Installation}
 
+
 \subsection{Installation}
-Test
+Für das Projekt entschieden wir uns für ROS Indigo, die LongTerm... 
+Die Installation erfolge auf Ubuntu 14.04 
+Als grundlage nutzten wir das offizielle Installations Tutorial des ROS Wikis.
+Zunächst mussten Pakete von packages.ros.org akzeptiert werden. Der Befehl dazu lautet: 
+\begin{align}
+&sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu \\ 
+&\$(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+\end{align}
+Set up your Key?
+
+Mit dem Befehl 
+\begin{align}
+&sudo apt-get install ros-indigo-desktop-full
+\end{align}
+wird die komplette Installation gestartet, die folgenende Komponenten enthält: ROS, rqt, rviz, robot-generic libraries, 2D/3D Simulatoren, Navigation und Pakete für die 2D und 3D Wahrnehmung.
+\\
+
+Bevor ROS nun genutzt werden kann, muss rosdep initialisiert werden. Dies erlaubt die einfache Installation von...
+\begin{align}
+&sudo rosdep init\\
+&rosdep update
+\end{align}
+Um die setup.bash Datei nicht bei jedem öffnen einer neuen Shell sourcen zu müssen, empfiehlt es sich, diesen Befehl in die bashrc Datei zu kopieren.
+Dafür nutzten wir folgenden Befehl:
+\begin{align}
+&echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc\\
+&source ~/.bashrc
+\end{align}
 \subsection{Erstellen von Workspace}
+
+Nach der Installation ist es nötig, ein Workspace zu erstellen, in dem gearbeitet wird.
+
+\begin{align}
+&\$ mkdir -p ~/catkin_ws/src\\
+&\$ cd ~/catkin_ws/src\\
+&\$ catkin_init_workspace
+\end{align}
 \subsection{Tutorial}
 Beispiel aus dem Tutorial
 \subsection{Installation von RVIZ}
