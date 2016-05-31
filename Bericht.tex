@@ -30,42 +30,48 @@ Die Installation erfolge auf Ubuntu 14.04
 Als grundlage nutzten wir das offizielle Installations Tutorial des ROS Wikis.
 Zunächst mussten Pakete von packages.ros.org akzeptiert werden. Der Befehl dazu lautet: 
 \begin{align}
-&sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu \\ 
-&\$(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+&sudo\ sh\ -c\ 'echo\ "deb\ http://packages.ros.org/ros/ubuntu \\ 
+&\$(lsb_release\ -sc)\ main"\ >\ /etc/apt/sources.list.d/ros-latest.list'
 \end{align}
 Set up your Key?
 
 Mit dem Befehl 
 \begin{align}
-&sudo apt-get install ros-indigo-desktop-full
+&sudo\ apt-get\ install\ ros-indigo-desktop-full
 \end{align}
 wird die komplette Installation gestartet, die folgenende Komponenten enthält: ROS, rqt, rviz, robot-generic libraries, 2D/3D Simulatoren, Navigation und Pakete für die 2D und 3D Wahrnehmung.
 \\
 
 Bevor ROS nun genutzt werden kann, muss rosdep initialisiert werden. Dies erlaubt die einfache Installation von...
 \begin{align}
-&sudo rosdep init\\
-&rosdep update
+&sudo\ rosdep\ init\\
+&rosdep\ update
 \end{align}
 Um die setup.bash Datei nicht bei jedem öffnen einer neuen Shell sourcen zu müssen, empfiehlt es sich, diesen Befehl in die bashrc Datei zu kopieren.
 Dafür nutzten wir folgenden Befehl:
 \begin{align}
-&echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc\\
-&source ~/.bashrc
+&echo\ "source\ /opt/ros/indigo/setup.bash"\ >>\ ~/.bashrc\\
+&source\ ~/.bashrc
 \end{align}
 \subsection{Erstellen von Workspace}
 
 Nach der Installation ist es nötig, ein Workspace zu erstellen, in dem gearbeitet wird.
 
 \begin{align}
-&\$ mkdir -p ~/catkin_ws/src\\
-&\$ cd ~/catkin_ws/src\\
-&\$ catkin_init_workspace
+&\$\ mkdir\ -p\ ~/catkin_ws/src\\
+&\$\ cd\ ~/catkin_ws/src\\
+&\$\ catkin_init_workspace
 \end{align}
 \subsection{Tutorial}
 Beispiel aus dem Tutorial
 \subsection{Installation von RVIZ}
+Die Installation von RViz war bereits im Installationspaket von ROS enthalten und musste hierfür nicht noch einmal gesondert installiert werden. Allerdings musste noch zusätzlich das ganze NAO-Paket, wie z.B. Treiber u.Ä. installiert werden. Über die Seite http://wiki.ros.org/nao/Tutorials/Installation gelangt man zu einem Tutorial, in dem alles Nötige erklärt wird. Nachdem wir dieses Tutorial durchgearbeitet hatten, war die Installation aller wichtigen Komponenten fast fertiggestellt. Um ein schon fertiges Modell des NAO-Roboters benutzen zu können, mussten wir noch ein zusätzliches Paket herunterladen und dazu einer Lizenzbestimmung zustimmen. Dieses wird über den Befehl
+\begin{align}
+&sudo\ apt-get\ install\ ros-indigo-nao-meshes
+\end{align}
+heruntergeladen und installiert.
 \subsection{Konfiguration von RVIZ für den NAO}
+Bei der Konfiguration von ROS für den NAO-Roboter sahen wir uns einigen Problemen gegenübergestellt. 
 \subsection{Installation von ROS auf den NAO}
 
 
