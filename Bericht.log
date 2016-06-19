@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.6.19)  20 JUN 2016 00:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.6.19)  20 JUN 2016 00:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -606,7 +606,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 41--44
 
  []
 
-[2] [3] (./Bericht.aux) ) 
+[2] [3] [4] (./Bericht.aux) ) 
 Here is how much of TeX's memory you used:
  3799 strings out of 493014
  58627 string characters out of 6137001
@@ -615,18 +615,18 @@ Here is how much of TeX's memory you used:
  52355 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,10n,51p,8488b,297s stack positions out of 5000i,500n,10000p,200000b,80000s
-{d:/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-rm.e
-nc}{d:/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{d:/texlive/201
-6/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{d:/texlive/2016/texmf-dist/fonts
-/enc/dvips/lm/lm-ec.enc}<d:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmmi1
-0.pfb><d:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr10.pfb><d:/texlive/2
-016/texmf-dist/fonts/type1/public/lm/lmr12.pfb><d:/texlive/2016/texmf-dist/font
-s/type1/public/lm/lmssbx10.pfb><d:/texlive/2016/texmf-dist/fonts/type1/public/l
-m/lmsy10.pfb><d:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on Bericht.pdf (3 pages, 105427 bytes).
+{d:/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-
+rm.enc}{d:/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{d:/texlive
+/2016/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{d:/texlive/2016/texmf-dist/f
+onts/enc/dvips/lm/lm-ec.enc}<d:/texlive/2016/texmf-dist/fonts/type1/public/lm/l
+mmi10.pfb><d:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr10.pfb><d:/texli
+ve/2016/texmf-dist/fonts/type1/public/lm/lmr12.pfb><d:/texlive/2016/texmf-dist/
+fonts/type1/public/lm/lmssbx10.pfb><d:/texlive/2016/texmf-dist/fonts/type1/publ
+ic/lm/lmsy10.pfb><d:/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
+Output written on Bericht.pdf (4 pages, 105480 bytes).
 PDF statistics:
- 44 PDF objects out of 1000 (max. 8388607)
- 32 compressed objects within 1 object stream
+ 47 PDF objects out of 1000 (max. 8388607)
+ 34 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
