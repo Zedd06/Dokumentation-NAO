@@ -8,7 +8,7 @@
 
 \title{Dokumentation Nao-Projekt}
 
-\date{25. Juni 2016}
+\date{19. Juni 2016}
 \begin{document}
 
 \maketitle
@@ -26,12 +26,12 @@ Diese Dokumentation behandelt unsere Vorgehensweise beim Softwareprojekt "Name".
 
 \subsection{Installation}
 Für das Projekt entschieden wir uns für ROS Indigo, die LongTerm... 
-Die Installation erfolge auf Ubuntu 14.04 
-Als grundlage nutzten wir das offizielle Installations Tutorial des ROS Wikis.
+Die Installation erfolgte auf Ubuntu 14.04 
+Als Grundlage nutzten wir das offizielle Installationstutorial des ROS Wikis.
 Zunächst mussten Pakete von packages.ros.org akzeptiert werden. Der Befehl dazu lautet: 
 \begin{align}
-&sudo\ sh\ -c\ 'echo\ "deb\ http://packages.ros.org/ros/ubuntu \\ 
-&\$(lsb_release\ -sc)\ main"\ >\ /etc/apt/sources.list.d/ros-latest.list'
+&sudo\ sh\ -c\ 'echo\ ``deb\ http://packages.ros.org/ros/ubuntu \\ 
+&\$(lsb\_release\ -sc)\ main"\ >\ /etc/apt/sources.list.d/ros-latest.list'
 \end{align}
 Set up your Key?
 
@@ -39,28 +39,28 @@ Mit dem Befehl
 \begin{align}
 &sudo\ apt-get\ install\ ros-indigo-desktop-full
 \end{align}
-wird die komplette Installation gestartet, die folgenende Komponenten enthält: ROS, rqt, rviz, robot-generic libraries, 2D/3D Simulatoren, Navigation und Pakete für die 2D und 3D Wahrnehmung.
+wird die komplette Installation gestartet, die folgende Komponenten enthält: ROS, rqt, rviz, robot-generic libraries, 2D/3D Simulatoren, Navigation und Pakete für die 2D und 3D Wahrnehmung.
 \\
 
-Bevor ROS nun genutzt werden kann, muss rosdep initialisiert werden. Dies erlaubt die einfache Installation von...
+Bevor ROS nun genutzt werden kann, muss rosdep initialisiert werden. Dies erlaubt die einfache Eingabe von...
 \begin{align}
 &sudo\ rosdep\ init\\
 &rosdep\ update
 \end{align}
-Um die setup.bash Datei nicht bei jedem öffnen einer neuen Shell sourcen zu müssen, empfiehlt es sich, diesen Befehl in die bashrc Datei zu kopieren.
-Dafür nutzten wir folgenden Befehl:
+Um die setup.bash Datei nicht bei jedem Öffnen einer neuen Shell sourcen zu müssen, empfiehlt es sich, diesen Befehl in die .bashrc-Datei zu kopieren.
+Dafür nutzten wir folgende Befehle:
 \begin{align}
-&echo\ "source\ /opt/ros/indigo/setup.bash"\ >>\ ~/.bashrc\\
-&source\ ~/.bashrc
+&echo\ ``source\ /opt/ros/indigo/setup.bash"\ >>\ \sim/.bashrc\\
+&source\ \sim/.bashrc
 \end{align}
 \subsection{Erstellen von Workspace}
 
-Nach der Installation ist es nötig, ein Workspace zu erstellen, in dem gearbeitet wird.
+Nach der Installation ist es nötig, einen Workspace zu erstellen, in dem gearbeitet wird.
 
 \begin{align}
-&\$\ mkdir\ -p\ ~/catkin_ws/src\\
-&\$\ cd\ ~/catkin_ws/src\\
-&\$\ catkin_init_workspace
+&\$\ mkdir\ -p\ \sim/catkin\_ws/src\\
+&\$\ cd\ \sim/catkin\_ws/src\\
+&\$\ catkin\_init\_workspace
 \end{align}
 \subsection{Tutorial}
 Auf der ROS-Wikiseite http://wiki.ros.org/ROS/Tutorials finden sich viele Tutorials, welche den Umgang mit dem ROS Filesystem, Packages und Nodes, sowie das Schreiben von Publishern und Subscribern in C++ oder Python beschreiben.
@@ -72,8 +72,24 @@ Die Installation von RViz war bereits im Installationspaket von ROS enthalten un
 \end{align}
 heruntergeladen und installiert.
 \subsection{Konfiguration von RVIZ für den NAO}
-Bei der Konfiguration von ROS für den NAO-Roboter sahen wir uns einigen Problemen gegenübergestellt. 
-\subsection{Installation von ROS auf den NAO}
+Bei der Konfiguration von ROS für den NAO-Roboter sahen wir uns einigen Problemen gegenübergestellt. Zunächst war das Tutorial, welches auf der ROS-Wikiseite zu finden ist, veraltet. Das Problem dabei war, dass dieses das einzige Tutorial war, das wir auffinden konnten. Deshalb mussten wir uns erst einmal eine ganze Weile mit RViz auseinander setzen. Nach dem Durchforsten einiger Foreneinträge und auch ein wenig Ausprobieren, fanden wir dann die richtigen Befehle, um eine ordentliche Simulation des NAO über RViz laufen zu lassen.
+Zunächst wird der Roscore gestartet:
+\begin{align}
+&cd\ \sim/catkin\_ws\\
+&roscore
+\end{align}
+Anschließend werden die Simulation und die dazugehörigen Treiber gestartet:
+\begin{align}
+&\sim/naoqi/naoqi\-sdk\-2.1.4.13\-linux64/naoqi\ --verbose\ \-\-broker-ip\ 127.0.0.1\\
+&roslaunch\ naoqi\_driver\_py\ naoqi\_driver.launch
+\end{align}
+Für den letzten Schritt bearbeiteten wir eine bereits vorhandene .launch-Datei so, dass RViz nach unseren Vorstellungen das Modell lädt. Das ganze startet man dann über folgenden Befehl:
+\begin{align}
+&roslaunch\ nao\_description\ display.launch
+\end{align}
+display.launch ist hierbei unsere editierte Datei.
+Damit haben wir einen simulierten NAO-Roboter, dem wir per Konsole Befehle erteilen können.
+\subsection{Installation von ROS auf dem NAO}
 
 
 \section{Programmierung des NAO unter ROS}
