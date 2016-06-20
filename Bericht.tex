@@ -17,7 +17,7 @@
 
 \section{Einleitung}
 
-Diese Dokumentation behandelt unsere Vorgehensweise beim Softwareprojekt "Name"..
+Diese Dokumentation behandelt unsere Vorgehensweise beim Softwareprojekt...
 
 \subsection{Planung}
 
@@ -25,7 +25,7 @@ Diese Dokumentation behandelt unsere Vorgehensweise beim Softwareprojekt "Name".
 
 
 \subsection{Installation}
-Für das Projekt entschieden wir uns für ROS Indigo, die LongTerm... 
+Für das Projekt entschieden wir uns für ROS Indigo, die aktuellste Version mit Langzeitunterstützung.
 Die Installation erfolgte auf Ubuntu 14.04 
 Als Grundlage nutzten wir das offizielle Installationstutorial des ROS Wikis.
 Zunächst mussten Pakete von packages.ros.org akzeptiert werden. Der Befehl dazu lautet: 
@@ -33,15 +33,17 @@ Zunächst mussten Pakete von packages.ros.org akzeptiert werden. Der Befehl dazu
 &sudo\ sh\ -c\ 'echo\ ``deb\ http://packages.ros.org/ros/ubuntu \\ 
 &\$(lsb\_release\ -sc)\ main"\ >\ /etc/apt/sources.list.d/ros-latest.list'
 \end{align}
-Set up your Key?
-
+Außerdem muss noch die Schlüssel ID  zur Authentifizierung der Pakete vom Server heruntergeladen werden:
+\begin{align}
+&sudo\ apt-key\ adv\ --keyserver\ hkp://ha.pool.sks-keyservers.net\\ 
+& --recv-key\ 0xB01FA116
+\end{align}
 Mit dem Befehl 
 \begin{align}
 &sudo\ apt-get\ install\ ros-indigo-desktop-full
 \end{align}
 wird die komplette Installation gestartet, die folgende Komponenten enthält: ROS, rqt, rviz, robot-generic libraries, 2D/3D Simulatoren, Navigation und Pakete für die 2D und 3D Wahrnehmung.
 \\
-
 Bevor ROS nun genutzt werden kann, muss rosdep initialisiert werden. Dies erlaubt die einfache Eingabe von...
 \begin{align}
 &sudo\ rosdep\ init\\
