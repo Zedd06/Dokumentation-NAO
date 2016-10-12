@@ -1,11 +1,15 @@
 \select@language {ngerman}
-\contentsline {section}{\numberline {1}Einleitung}{2}
-\contentsline {subsection}{\numberline {1.1}Planung}{2}
-\contentsline {section}{\numberline {2}Installation}{2}
-\contentsline {subsection}{\numberline {2.1}Installation}{2}
-\contentsline {subsection}{\numberline {2.2}Erstellen von Workspace}{3}
-\contentsline {subsection}{\numberline {2.3}Tutorial}{3}
-\contentsline {subsection}{\numberline {2.4}Installation von RVIZ}{3}
-\contentsline {subsection}{\numberline {2.5}Konfiguration von RVIZ f\IeC {\"u}r den NAO}{3}
-\contentsline {subsection}{\numberline {2.6}Installation von ROS auf dem NAO}{4}
-\contentsline {section}{\numberline {3}Programmierung des NAO unter ROS}{4}
+\contentsline {section}{\numberline {1}Einleitung}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Planung}{2}{subsection.1.1}
+\contentsline {section}{\numberline {2}Installation}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Installation}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Erstellen von Workspace}{3}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Tutorial}{3}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Installation von RVIZ}{3}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Konfiguration von RVIZ f\IeC {\"u}r den NAO}{3}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Einarbeitung in NAO-API}{4}{subsection.2.6}
+\contentsline {section}{\numberline {3}Programmierung}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Erste Schritte}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Schlagbewegung}{4}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Ballerkennung}{4}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Zielerkennung}{4}{subsection.3.4}
