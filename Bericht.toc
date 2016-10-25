@@ -11,5 +11,5 @@
 \contentsline {section}{\numberline {3}Programmierung}{4}{section.3}
 \contentsline {subsection}{\numberline {3.1}Erste Schritte}{4}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Schlagbewegung}{4}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Ballerkennung}{4}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Zielerkennung}{4}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.3}Ballerkennung}{5}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Zielerkennung}{5}{subsection.3.4}

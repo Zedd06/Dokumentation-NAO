@@ -22,10 +22,12 @@ Diese Dokumentation behandelt unsere Vorgehensweise beim Softwareprojekt...
 
 \subsection{Planung}
 
+
 \section{Installation}
 
 
 \subsection{Installation}
+
 Für das Projekt entschieden wir uns für ROS Indigo, die aktuellste Version mit Langzeitunterstützung.
 Die Installation erfolgte auf Ubuntu 14.04 
 Als Grundlage nutzten wir das offizielle Installationstutorial des ROS Wikis.
@@ -56,6 +58,7 @@ Dafür nutzten wir folgende Befehle:
 &echo\ ``source\ /opt/ros/indigo/setup.bash"\ >>\ \sim/.bashrc\\
 &source\ \sim/.bashrc
 \end{align}
+
 \subsection{Erstellen von Workspace}
 
 Nach der Installation ist es nötig, einen Workspace zu erstellen, in dem gearbeitet wird.
@@ -65,16 +68,22 @@ Nach der Installation ist es nötig, einen Workspace zu erstellen, in dem gearbe
 &\$\ cd\ \sim/catkin\_ws/src\\
 &\$\ catkin\_init\_workspace
 \end{align}
+
 \subsection{Tutorial}
+
 Auf der ROS-Wikiseite http://wiki.ros.org/ROS/Tutorials finden sich viele Tutorials, welche den Umgang mit dem ROS Filesystem, Packages und Nodes, sowie das Schreiben von Publishern und Subscribern in C++ oder Python beschreiben.
 Diese wurden von uns zur Einarbeitung bearbeitet.
+
 \subsection{Installation von RVIZ}
+
 Die Installation von RViz war bereits im Installationspaket von ROS enthalten und musste hierfür nicht noch einmal gesondert installiert werden. Allerdings musste noch zusätzlich das ganze NAO-Paket, wie z.B. Treiber u.Ä. installiert werden. Über die Seite http://wiki.ros.org/nao/Tutorials/Installation gelangt man zu einem Tutorial, in dem alles Nötige erklärt wird. Nachdem wir dieses Tutorial durchgearbeitet hatten, war die Installation aller wichtigen Komponenten fast fertiggestellt. Um ein schon fertiges Modell des NAO-Roboters benutzen zu können, mussten wir noch ein zusätzliches Paket herunterladen und dazu einer Lizenzbestimmung zustimmen. Dieses wird über den Befehl
 \begin{align}
 &sudo\ apt-get\ install\ ros-indigo-nao-meshes
 \end{align}
 heruntergeladen und installiert.
+
 \subsection{Konfiguration von RVIZ für den NAO}
+
 Bei der Konfiguration von ROS für den NAO-Roboter sahen wir uns einigen Problemen gegenübergestellt. Zunächst war das Tutorial, welches auf der ROS-Wikiseite zu finden ist, veraltet. Das Problem dabei war, dass dieses das einzige Tutorial war, das wir auffinden konnten. Deshalb mussten wir uns erst einmal eine ganze Weile mit RViz auseinander setzen. Nach dem Durchforsten einiger Foreneinträge und auch ein wenig Ausprobieren, fanden wir dann die richtigen Befehle, um eine ordentliche Simulation des NAO über RViz laufen zu lassen.
 Zunächst wird der Roscore gestartet:
 \begin{align}
@@ -95,33 +104,31 @@ Damit haben wir einen simulierten NAO-Roboter, dem wir per Konsole Befehle ertei
 
 \subsection{Einarbeitung in NAO-API}
 
-\url{http://doc.aldebaran.com/1-14/naoqi/index.html}
-
-
+Nachdem wir dem NAO-Roboter ein paar Befehle direkt über die Konsole erteilt hatten, ging es nun darum, ihn komplexere Befehlssätze ausführen zu lassen. 
+Dazu mussten wir uns allerdings zunächst in die NAO-API einarbeiten, welche unter folgender Adresse zu erreichen ist:\\
+\url{http://doc.aldebaran.com/1-14/naoqi/index.html} \\
+Zusätzlich dazu schauten wir uns auch einige Code-Beispiele zu wichtigen Themen, wie z.B. der Ballerkennung an, um die Funktionsweise der einzelnen Befehle zu verstehen.
 
 
 \section{Programmierung}
+
+
 \subsection{Erste Schritte}
 
 Nachdem wir die Installation und Konfiguration durchgeführt hatten, testeten wir zunächst einige Grundfunktionen anhand der Visualisierung mit RViz.
-Hierbei nutzten wir die Konsole um Befehle direkt zu übermitteln. Dabei stellten wir fest, dass einige Befehle in der Visualisierung nicht umgesetzt werden konnten, da genutzte Modell in RViz nicht vollständig war.
-Im Anschluss führten wir die Kommandos am Roboter aus, was weniger Probleme verursachte als wir uns vorgestellt hatten. 
+Hierbei nutzten wir die Konsole um Befehle direkt zu übermitteln. Dabei stellten wir fest, dass einige Befehle in der Visualisierung nicht umgesetzt werden konnten, da das genutzte Modell in RViz nicht vollständig war.
+Im Anschluss führten wir die Kommandos am Roboter aus, was weniger Probleme verursachte, als wir uns vorgestellt hatten. 
 Dennoch mussten wir uns noch viel mit der NAO-API auseinander setzen, um die benötigten Schnittstellen zu finden.
 
 \subsection{Schlagbewegung}
 
-Um die Schlagbewegung durchzuführen testeten wir zunächst die ungefähren Bewegungen in der Simulation. Am Roboter führten wir danach die Feinabstimmung durch und nutzten dabei einen kleinen Spielzeuggolfschläger für Kinder. 
-
-Da sich in diesem Abschnitt herausstellte, dass das Ausführen unter ROS sehr viel Zeit beanspruchte, verzichteten wir im Folgenden auf ROS und nutzten statt dessen 
-Python-Skripte um Änderungen schneller austesten zu können.
-
-Um diverse Befehle 
+Um die Schlagbewegung durchzuführen testeten wir zunächst die ungefähren Bewegungen in der Simulation. Am Roboter führten wir danach die Feinabstimmung durch und nutzten dabei einen kleinen Spielzeuggolfschläger. 
+Da sich in diesem Abschnitt herausstellte, dass das Ausführen unter ROS sehr viel Zeit beanspruchte, verzichteten wir im Folgenden temporär auf ROS und nutzten stattdessen einfache Python-Skripte, um Änderungen schneller austesten zu können.
 
 \subsection{Ballerkennung}
 
-Da der NAO bereits eine Funktion für die Erkennung eines roten Balls besitzt, nutzten wir einen solchen Ball als 
-
-
+Da der NAO bereits eine Funktion für die Erkennung eines roten Balls besitzt, nutzten wir Diese direkt. Hierfür besorgten wir uns einen roten Plastikball und führten erste Versuche durch, um die Funktion für unsere Zwecke einsetzen zu können.
+Allerdings mussten wir hierbei einige Anpassungen vornehmen, weil die Kamera des NAO nur einen bestimmten Sichtbereich hat und der Bereich direkt vor dem Roboter nicht mehr sichtbar ist. Da wir deshalb das letzte Stück "blind" steuern mussten, kam es hierbei auch häufig zu Ungenauigkeiten beim Schlag. Daraus resultierte eine schwer zu kalkulierende Ballbewegung, für die wir auch erstmal keine Lösung fanden. Wir nahmen uns vor, diese Problemstellung zu einem späteren Zeitpunkt noch einmal zu bearbeiten und uns zunächst mal um die Erkennung des Zieles zu kümmern.
 
 \subsection{Zielerkennung}
 
