@@ -6,6 +6,7 @@
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage{pdfpages}
 
 \title{Dokumentation Softwareprojekt}
 
@@ -35,6 +36,17 @@ Im Rahmen der Veranstaltung mussten wir uns, für die Bearbeitung von Softwarepr
 \subsection{NAO Roboter}
 
 \subsection{Minigolf Ausrüstung}
+
+\subsubsection{Die Bahn}
+Da der neue NAO Schwierigkeiten mit dem Teppichboden unseres Büros hatte und um gleichbleibende Bedingungen zu ermöglichen, entschieden wir uns für eine Bahn aus Holz mit den Maßen: 2,5m x 1,35m. Bis auf den Startbereich ist die Bahn von einem 5cm hohen Rand umgeben, welcher als Bande dienen soll. Das Ziel hat einen Durchmesser von 15cm und ist 45cm vom hinteren Rand entfernt (siehe Anhang A1). Zudem entschieden wir uns für zwei kreisrunde Hindernisse in blau und grün mit einem Durchmesser von 18cm. Um  optimale Voraussetzungen für die Erkennung des Balls, sowie der Hindernisse zu ermöglichen wurde die Bahn weiß.
+
+\subsubsection{Der Schläger}
+
+\subsubsection{Der Ball}
+Wir testeten über Monate verschiedene Bälle, sowohl in Hinblick auf Größe als auch auf Material. Die Wahl der Farbe fiel direkt auf rot, da der NAO bereits eine RedBall Detection besitzt
+
+\section{Ablauf}
+
 
 
 \section{Installation}
@@ -146,5 +158,16 @@ Allerdings mussten wir hierbei einige Anpassungen vornehmen, weil die Kamera des
 
 \subsection{Zielerkennung}
 
+
+
+
+  
+\appendix 
+\section{Anhang}
+
+\includepdf[pages=1,pagecommand=\subsection{Minigolfbahn }]{MiniGolfBahn.pdf} 
+
+\includepdf[pages=1,pagecommand=\subsection{Schläger }]{Schlaeger.pdf} 
+ 
 
 \end{document}

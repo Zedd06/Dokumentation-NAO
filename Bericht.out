@@ -6,15 +6,22 @@
 \BOOKMARK [1][-]{section.3}{Eingesetzte Hardware}{}% 6
 \BOOKMARK [2][-]{subsection.3.1}{NAO Roboter}{section.3}% 7
 \BOOKMARK [2][-]{subsection.3.2}{Minigolf Ausr\374stung}{section.3}% 8
-\BOOKMARK [1][-]{section.4}{Installation}{}% 9
-\BOOKMARK [2][-]{subsection.4.1}{Installation von ROS}{section.4}% 10
-\BOOKMARK [2][-]{subsection.4.2}{Erstellen von Workspace}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.3}{Tutorial}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.4}{Installation von RVIZ}{section.4}% 13
-\BOOKMARK [2][-]{subsection.4.5}{Konfiguration von RVIZ f\374r den NAO}{section.4}% 14
-\BOOKMARK [2][-]{subsection.4.6}{Einarbeitung in NAO-API}{section.4}% 15
-\BOOKMARK [1][-]{section.5}{Programmierung}{}% 16
-\BOOKMARK [2][-]{subsection.5.1}{Erste Schritte}{section.5}% 17
-\BOOKMARK [2][-]{subsection.5.2}{Schlagbewegung}{section.5}% 18
-\BOOKMARK [2][-]{subsection.5.3}{Ballerkennung}{section.5}% 19
-\BOOKMARK [2][-]{subsection.5.4}{Zielerkennung}{section.5}% 20
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Die Bahn}{subsection.3.2}% 9
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Der Schl\344ger}{subsection.3.2}% 10
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Der Ball}{subsection.3.2}% 11
+\BOOKMARK [1][-]{section.4}{Ablauf}{}% 12
+\BOOKMARK [1][-]{section.5}{Installation}{}% 13
+\BOOKMARK [2][-]{subsection.5.1}{Installation von ROS}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.2}{Erstellen von Workspace}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.3}{Tutorial}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.4}{Installation von RVIZ}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.5}{Konfiguration von RVIZ f\374r den NAO}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.6}{Einarbeitung in NAO-API}{section.5}% 19
+\BOOKMARK [1][-]{section.6}{Programmierung}{}% 20
+\BOOKMARK [2][-]{subsection.6.1}{Erste Schritte}{section.6}% 21
+\BOOKMARK [2][-]{subsection.6.2}{Schlagbewegung}{section.6}% 22
+\BOOKMARK [2][-]{subsection.6.3}{Ballerkennung}{section.6}% 23
+\BOOKMARK [2][-]{subsection.6.4}{Zielerkennung}{section.6}% 24
+\BOOKMARK [1][-]{appendix.A}{Anhang}{}% 25
+\BOOKMARK [2][-]{subsection.A.1}{Minigolfbahn}{appendix.A}% 26
+\BOOKMARK [2][-]{subsection.A.2}{Schl\344ger}{appendix.A}% 27

@@ -7,15 +7,22 @@
 \contentsline {section}{\numberline {3}Eingesetzte Hardware}{2}{section.3}
 \contentsline {subsection}{\numberline {3.1}NAO Roboter}{2}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Minigolf Ausr\IeC {\"u}stung}{2}{subsection.3.2}
-\contentsline {section}{\numberline {4}Installation}{2}{section.4}
-\contentsline {subsection}{\numberline {4.1}Installation von ROS}{2}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Erstellen von Workspace}{3}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Tutorial}{3}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Installation von RVIZ}{3}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Konfiguration von RVIZ f\IeC {\"u}r den NAO}{4}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Einarbeitung in NAO-API}{4}{subsection.4.6}
-\contentsline {section}{\numberline {5}Programmierung}{4}{section.5}
-\contentsline {subsection}{\numberline {5.1}Erste Schritte}{4}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Schlagbewegung}{5}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Ballerkennung}{5}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Zielerkennung}{5}{subsection.5.4}
+\contentsline {subsubsection}{\numberline {3.2.1}Die Bahn}{2}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Der Schl\IeC {\"a}ger}{2}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Der Ball}{2}{subsubsection.3.2.3}
+\contentsline {section}{\numberline {4}Ablauf}{3}{section.4}
+\contentsline {section}{\numberline {5}Installation}{3}{section.5}
+\contentsline {subsection}{\numberline {5.1}Installation von ROS}{3}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Erstellen von Workspace}{3}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Tutorial}{4}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Installation von RVIZ}{4}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Konfiguration von RVIZ f\IeC {\"u}r den NAO}{4}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}Einarbeitung in NAO-API}{5}{subsection.5.6}
+\contentsline {section}{\numberline {6}Programmierung}{5}{section.6}
+\contentsline {subsection}{\numberline {6.1}Erste Schritte}{5}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Schlagbewegung}{5}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Ballerkennung}{5}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Zielerkennung}{6}{subsection.6.4}
+\contentsline {section}{\numberline {A}Anhang}{6}{appendix.A}
+\contentsline {subsection}{\numberline {A.1}Minigolfbahn}{7}{subsection.A.1}
+\contentsline {subsection}{\numberline {A.2}Schl\IeC {\"a}ger}{8}{subsection.A.2}
