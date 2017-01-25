@@ -8,7 +8,7 @@
 \contentsline {subsection}{\numberline {3.1}NAO Roboter}{2}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Minigolf Ausr\IeC {\"u}stung}{2}{subsection.3.2}
 \contentsline {section}{\numberline {4}Installation}{2}{section.4}
-\contentsline {subsection}{\numberline {4.1}Installation}{2}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.1}Installation von ROS}{2}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Erstellen von Workspace}{3}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Tutorial}{3}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Installation von RVIZ}{3}{subsection.4.4}
