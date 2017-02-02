@@ -1,28 +1,28 @@
 \select@language {ngerman}
-\contentsline {section}{\numberline {1}Einleitung}{2}{section.1}
-\contentsline {subsection}{\numberline {1.1}Projektbeschreibung}{2}{subsection.1.1}
-\contentsline {section}{\numberline {2}Eingesetzte Tools/Werkzeuge}{2}{section.2}
-\contentsline {subsection}{\numberline {2.1}ROS Indigo}{2}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}RViz}{2}{subsection.2.2}
-\contentsline {section}{\numberline {3}Eingesetzte Hardware}{2}{section.3}
-\contentsline {subsection}{\numberline {3.1}NAO Roboter}{2}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Minigolf Ausr\IeC {\"u}stung}{2}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}Die Bahn}{2}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}Der Schl\IeC {\"a}ger}{2}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Der Ball}{2}{subsubsection.3.2.3}
-\contentsline {section}{\numberline {4}Ablauf}{3}{section.4}
-\contentsline {section}{\numberline {5}Installation}{3}{section.5}
-\contentsline {subsection}{\numberline {5.1}Installation von ROS}{3}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Erstellen von Workspace}{3}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Tutorial}{4}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Installation von RVIZ}{4}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Konfiguration von RVIZ f\IeC {\"u}r den NAO}{4}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}Einarbeitung in NAO-API}{5}{subsection.5.6}
-\contentsline {section}{\numberline {6}Programmierung}{5}{section.6}
-\contentsline {subsection}{\numberline {6.1}Erste Schritte}{5}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Schlagbewegung}{5}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Ballerkennung}{5}{subsection.6.3}
-\contentsline {subsection}{\numberline {6.4}Zielerkennung}{6}{subsection.6.4}
-\contentsline {section}{\numberline {A}Anhang}{6}{appendix.A}
-\contentsline {subsection}{\numberline {A.1}Minigolfbahn}{7}{subsection.A.1}
-\contentsline {subsection}{\numberline {A.2}Schl\IeC {\"a}ger}{8}{subsection.A.2}
+\contentsline {section}{\numberline {1}Einleitung}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Projektbeschreibung}{3}{subsection.1.1}
+\contentsline {section}{\numberline {2}Eingesetzte Tools/Werkzeuge}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}ROS Indigo}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}RViz}{3}{subsection.2.2}
+\contentsline {section}{\numberline {3}Eingesetzte Hardware}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}NAO Roboter}{3}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Minigolf Ausr\IeC {\"u}stung}{3}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Die Bahn}{3}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Der Schl\IeC {\"a}ger}{4}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Der Ball}{4}{subsubsection.3.2.3}
+\contentsline {section}{\numberline {4}Installation}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Installation von ROS}{4}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Erstellen eines Workspaces}{5}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Tutorial}{5}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Installation von RVIZ}{5}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Konfiguration von RVIZ f\IeC {\"u}r den NAO}{6}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Einarbeitung in NAO-API}{6}{subsection.4.6}
+\contentsline {section}{\numberline {5}Programmierung}{6}{section.5}
+\contentsline {subsection}{\numberline {5.1}Erste Schritte}{6}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Schlagbewegung}{7}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Ballerkennung}{7}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Zielen}{7}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Erkennen der Hindernisse}{8}{subsection.5.5}
+\contentsline {section}{\numberline {A}Anhang}{8}{appendix.A}
+\contentsline {subsection}{\numberline {A.1}Minigolfbahn}{9}{subsection.A.1}
+\contentsline {subsection}{\numberline {A.2}Schl\IeC {\"a}ger}{10}{subsection.A.2}

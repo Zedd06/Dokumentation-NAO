@@ -8,6 +8,45 @@
 \usepackage{hyperref}
 \usepackage{pdfpages}
 
+\usepackage{listings}
+\lstset{numbers=left, numberstyle=\tiny, numbersep=5pt}
+\lstset{language=Python}
+
+
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+otherkeywords={self},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false            % 
+}}
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
 \title{Dokumentation Softwareprojekt}
 
 \date{19. Juni 2016}
@@ -19,11 +58,11 @@
 
 \section{Einleitung}
 
-Diese Dokumentation behandelt unsere Vorgehensweise beim Softwareprojekt...
 
 \subsection{Projektbeschreibung}
 
-Im Rahmen der Veranstaltung mussten wir uns, für die Bearbeitung von Softwareprojekten in Gruppen zusammenfinden. Anschließend musste sich jedes Team eine/n betreuende/n Professor/in suchen und mit dieser/m ein Projekt, zur Umsetzung innerhalb von 2 Semestern, planen und durchführen. Unser Team, bestehend aus Edgar Filipsen, Mika Katzwinkel, Jakob Kost, Hubert Richter und Sebastian Schreiter suchte sich Frau Prof. Dr. rer. nat. Brabender als betreuende Professorin aus. 
+Im Rahmen der Veranstaltung mussten wir uns, für die Bearbeitung von Softwareprojekten in Gruppen zusammenfinden. Anschließend musste sich jedes Team eine/n betreuende/n Professor/in suchen und mit dieser/m ein Projekt, zur Umsetzung innerhalb von 2 Semestern, planen und durchführen. Unser Team, bestehend aus Edgar Filipsen, Mika Katzwinkel, Jakob Kost, Hubert Richter und Sebastian Schreiter suchte sich Frau Prof. Dr. rer. nat. Brabender als betreuende Professorin aus.
+Da die Aufgabenstellung offen war, überlegten wir uns, dass der NAO Minigolf spielen soll. Dabei soll er Hindernisse selbstständig umspielen und schließlich ins Ziel treffen können.
 
 \section{Eingesetzte Tools/Werkzeuge}
 
@@ -34,19 +73,24 @@ Im Rahmen der Veranstaltung mussten wir uns, für die Bearbeitung von Softwarepr
 \section{Eingesetzte Hardware}
 
 \subsection{NAO Roboter}
+Im ersten halben Jahr nutzten wir einen NAO Roboter, welcher uns freundlicherweise von Frau Dederichs-Koch des Fachbereichs M zur Verfügung gestellt wurde. Bei diesem traten leider des öfteren Probleme mit überhitzten Motoren und einem schwächelndem Akku auf.  
+Mit dem NAO der neueren Generation traten diese weitaus seltener auf. Auch hat sich die Griffestigkeit der Finger stark verbessert.
+
+Bei dem NAO handelt es sich um einen humanoiden Roboter der Herstellers Aldebaran.
+Dieser ist etwa 60 cm groß und hat ein Gewicht von 5,2 kg. Er besitzt zwei Kameras, welche ihm eine Orientierung ermöglichen,  mehrere Mikrofone, Druck- und Berührungssensoren zur Interaktion, sowie ein Sonarsystem auf der Brust. Die Verbindung kann über Ethernet oder WLAN erfolgen. 
+
+///// Beschreiben der Macken?, Grobe Umschreibung Technische Details? //////
 
 \subsection{Minigolf Ausrüstung}
 
 \subsubsection{Die Bahn}
-Da der neue NAO Schwierigkeiten mit dem Teppichboden unseres Büros hatte und um gleichbleibende Bedingungen zu ermöglichen, entschieden wir uns für eine Bahn aus Holz mit den Maßen: 2,5m x 1,35m. Bis auf den Startbereich ist die Bahn von einem 5cm hohen Rand umgeben, welcher als Bande dienen soll. Das Ziel hat einen Durchmesser von 15cm und ist 45cm vom hinteren Rand entfernt (siehe Anhang A1). Zudem entschieden wir uns für zwei kreisrunde Hindernisse in blau und grün mit einem Durchmesser von 18cm. Um  optimale Voraussetzungen für die Erkennung des Balls, sowie der Hindernisse zu ermöglichen wurde die Bahn weiß.
+Da der neue NAO Schwierigkeiten mit dem Teppichboden unseres Büros hatte und um gleichbleibende Bedingungen zu ermöglichen, entschieden wir uns für eine Bahn aus Holz mit den Maßen: 2,5 m x 1,35 m. Bis auf den Startbereich ist die Bahn von einem 5 cm hohen Rand umgeben, welcher als Bande dienen soll. Das Ziel hat einen Durchmesser von 15 cm und ist 45 cm vom hinteren Rand entfernt (siehe Anhang A1). Zudem entschieden wir uns für zwei kreisrunde Hindernisse in blau und grün mit einem Durchmesser von 18 cm. Um  optimale Voraussetzungen für die Erkennung des Balls, sowie der Hindernisse zu ermöglichen wurde die Bahn weiß.
 
 \subsubsection{Der Schläger}
+Zu Beginn nutzten wir einen kleinen Minigolfschläger aus Plastik. Der NAO konnte diesen allerdings nicht  immer fest halten, besonders beim Ausholen und Schlagen verrutschte der Schläger in der Hand des NAOs. Daraufhin ließen wir von der mechanischen Werkstatt der Hochschule Bochum einen Schläger aus Aluminium mit einem zusätzlichen Griff anfertigen(siehe Anhang A2).
 
 \subsubsection{Der Ball}
-Wir testeten über Monate verschiedene Bälle, sowohl in Hinblick auf Größe als auch auf Material. Die Wahl der Farbe fiel direkt auf rot, da der NAO bereits eine RedBall Detection besitzt
-
-\section{Ablauf}
-
+Wir testeten über Monate verschiedene Bälle, sowohl in Hinblick auf Größe als auch auf Material. Die Wahl der Farbe fiel direkt auf rot, da der NAO bereits eine "Redball Detection" besitzt. Wir entschieden uns für einen massiven Gummiball mit einem Durchmesser von 6 cm.  
 
 
 \section{Installation}
@@ -85,7 +129,7 @@ Dafür nutzten wir folgende Befehle:
 &source\ \sim/.bashrc
 \end{align}
 
-\subsection{Erstellen von Workspace}
+\subsection{Erstellen eines Workspaces}
 
 Nach der Installation ist es nötig, einen Workspace zu erstellen, in dem gearbeitet wird.
 
@@ -97,12 +141,14 @@ Nach der Installation ist es nötig, einen Workspace zu erstellen, in dem gearbe
 
 \subsection{Tutorial}
 
-Auf der ROS-Wikiseite http://wiki.ros.org/ROS/Tutorials finden sich viele Tutorials, welche den Umgang mit dem ROS Filesystem, Packages und Nodes, sowie das Schreiben von Publishern und Subscribern in C++ oder Python beschreiben.
+Auf der ROS-Wikiseite
+\url{http://wiki.ros.org/ROS/Tutorials} finden sich viele Tutorials, welche den Umgang mit dem ROS Filesystem, Packages und Nodes, sowie das Schreiben von Publishern und Subscribern in C++ oder Python beschreiben.
 Diese wurden von uns zur Einarbeitung bearbeitet.
 
 \subsection{Installation von RVIZ}
 
-Die Installation von RViz war bereits im Installationspaket von ROS enthalten und musste hierfür nicht noch einmal gesondert installiert werden. Allerdings musste noch zusätzlich das ganze NAO-Paket, wie z.B. Treiber u.Ä. installiert werden. Über die Seite http://wiki.ros.org/nao/Tutorials/Installation gelangt man zu einem Tutorial, in dem alles Nötige erklärt wird. Nachdem wir dieses Tutorial durchgearbeitet hatten, war die Installation aller wichtigen Komponenten fast fertiggestellt. Um ein schon fertiges Modell des NAO-Roboters benutzen zu können, mussten wir noch ein zusätzliches Paket herunterladen und dazu einer Lizenzbestimmung zustimmen. Dieses wird über den Befehl
+Die Installation von RViz war bereits im Installationspaket von ROS enthalten und musste hierfür nicht noch einmal gesondert installiert werden. Allerdings musste noch zusätzlich das ganze NAO-Paket, wie z.B. Treiber u.Ä. installiert werden. Über die Seite 
+\url{http://wiki.ros.org/nao/Tutorials/Installation}  gelangt man zu einem Tutorial, in dem alles Nötige erklärt wird. Nachdem wir dieses Tutorial durchgearbeitet hatten, war die Installation aller wichtigen Komponenten fast fertiggestellt. Um ein schon fertiges Modell des NAO-Roboters benutzen zu können, mussten wir noch ein zusätzliches Paket herunterladen und dazu einer Lizenzbestimmung zustimmen. Dieses wird über den Befehl
 \begin{align}
 &sudo\ apt-get\ install\ ros-indigo-nao-meshes
 \end{align}
@@ -146,6 +192,18 @@ Hierbei nutzten wir die Konsole um Befehle direkt zu übermitteln. Dabei stellte
 Im Anschluss führten wir die Kommandos am Roboter aus, was weniger Probleme verursachte, als wir uns vorgestellt hatten. 
 Dennoch mussten wir uns noch viel mit der NAO-API auseinander setzen, um die benötigten Schnittstellen zu finden.
 
+Mit dem Befehl
+\begin{align}
+rosrun rviz rviz
+\end{align}
+
+wird RViz gestartet und mit 
+
+\begin{align}
+&rostopic pub -1 /cmd\_vel geometry\_msgs/Twist\\ &'{linear: {x: 1.0, y: 0.0, z: 0.0},angular: {x: 0.0, y: 0.0, z: 0.0}}'
+\end{align}
+beginnt der virtuelle NAO sich vorwärts zu bewegen. Die linearen Variabeln geben die Richtung, angular die ???? an.
+
 \subsection{Schlagbewegung}
 
 Um die Schlagbewegung durchzuführen testeten wir zunächst die ungefähren Bewegungen in der Simulation. Am Roboter führten wir danach die Feinabstimmung durch und nutzten dabei einen kleinen Spielzeuggolfschläger. 
@@ -156,7 +214,37 @@ Da sich in diesem Abschnitt herausstellte, dass das Ausführen unter ROS sehr vi
 Da der NAO bereits eine Funktion für die Erkennung eines roten Balls besitzt, nutzten wir diese direkt. Hierfür besorgten wir uns einen roten Plastikball und führten erste Versuche durch, um die Funktion für unsere Zwecke einsetzen zu können.
 Allerdings mussten wir hierbei einige Anpassungen vornehmen, weil die Kamera des NAO nur einen bestimmten Sichtbereich hat und der Bereich direkt vor dem Roboter nicht mehr sichtbar ist. Da wir deshalb das letzte Stück ''blind'' steuern mussten, kam es hierbei auch häufig zu Ungenauigkeiten beim Schlag. Daraus resultierte eine schwer zu kalkulierende Ballbewegung, für die wir auch erstmal keine Lösung fanden. Wir nahmen uns vor, diese Problemstellung zu einem späteren Zeitpunkt noch einmal zu bearbeiten und uns zunächst mal um die Erkennung des Zieles zu kümmern.
 
-\subsection{Zielerkennung}
+\subsection{Zielen}
+
+Um auf das Ziel und um Hindernisse herum zu spielen, nahmen wir uns eine Funktion des NAOs zu Hilfe, die anhand eines farbigen Kreises die Koordinaten dieses Kreises ermittelt. Das Koordinatensystem bezieht sich hierbei auf den Sichtbereich des Roboters. Die X-Achse  
+hat einen Bereich von 0-160, die Y-Achse von 0-120, der Nullpunkt liegt oben links. Da das Kamerabild vom NAO kommt, liegt sein Referenzpunkt unten in der Mitte, also bei (80,120). Hat man nun diese zwei Punkte gegeben, lässt sich ein Dreieck bilden, dessen Hypotenuse die Verbindung zwischen NAO und Ziel darstellt. Da sich alle Längen des Dreiecks mithilfe der Längen der Achsen und den Koordinaten der Punkte errechnen lassen, kann auch der Winkel zwischen NAO und diesem Ziel berechnet werden. Nun musste nur noch eine Kreisbewegung programmiert werden, die den Roboter gleichmäßig um den Ball führt. Schließlich kann durch Messungen der Drehdauer eine Funktion bestimmt werden, die anhand eines Winkels die Zeit zurückgibt, die benötigt wird, damit der Roboter sich um diesen Winkel dreht.\\
+
+
+\begin{python}
+def turnToTarget(target):
+
+    # Calculate angle to Target
+    if(target[0] <= 80):
+        degree = math.degrees(math.atan(
+        	(120-target[1])/(80-target[0])))
+    else:
+        degree = 90 + math.degrees(math.atan(
+        (target[0]-80)/(120-target[1])))
+
+    # Calculate time to turn
+    global turnTime
+    turnTime = 0.079318*degree + 7.901573
+
+    # Turn
+    motion.move(0,0.02,-0.084)
+    time.sleep(turnTime)
+    motion.move(0,0,0)
+\end{python}
+ 
+\subsection{Erkennen der Hindernisse}
+
+Für die Erkennung der Hindernisse nutzen wir die selbe Methode wie für die Zielerkennung. Für die Ermittlung der Positionen wurde die Bahn in drei Abschnitte geteilt: rechts, mitte und links.  Da sich das Sichtfeld des NAOs wie beim Menschen auch nach hinten hin verzerrt, musste zunächst eine Funktion zur Ermittlung der Abschnitte erstellt werden. 
+
 
 
 
