@@ -67,7 +67,7 @@ Da die Aufgabenstellung offen war, überlegten wir uns, dass der NAO Minigolf sp
 \section{Eingesetzte Tools/Werkzeuge}
 
 \subsection{ROS Indigo}
-
+Bei dem Robot Operation System handelt es sich um eine Open Source Framework, welches für die Steuerung von Robotern eingesetzt werden kann. 
 \subsection{RViz}
 
 \section{Eingesetzte Hardware}
@@ -208,11 +208,82 @@ beginnt der virtuelle NAO sich vorwärts zu bewegen. Die linearen Variabeln gebe
 
 Um die Schlagbewegung durchzuführen testeten wir zunächst die ungefähren Bewegungen in der Simulation. Am Roboter führten wir danach die Feinabstimmung durch und nutzten dabei einen kleinen Spielzeuggolfschläger. 
 Da sich in diesem Abschnitt herausstellte, dass das Ausführen unter ROS sehr viel Zeit beanspruchte, verzichteten wir im Folgenden temporär auf ROS und nutzten stattdessen einfache Python-Skripte, um Änderungen schneller austesten zu können.
+Die Funktion angleInterpolation nimmt 4 Parameter entgegen. Der erste ist ein Array von Gelenken die bewegt werden sollen. Jedes Gelenk hat einen Bereich in dem es bewegt werden kann, die Punkte dieser Bereiche die angesteuert werden sollen, werden in einem Array als zweiter Parameter übergeben. Im dritten Array wird für jedes Gelenk eine Zeit in Sekunden angeben in der die gewünschte Position erreicht werden soll. Der letzte Parameter ist ein boolscher Wert, 0 gibt an dass die Bewegung relativ zur vorherigen Position ist, bei 1 wird eine absolute Position angesteuert.
+
+\begin{python}
+
+# Golf Swing Motion
+def hit():
+    motion.angleInterpolation(["RShoulderRoll","RShoulderPitch",
+       "RElbowRoll","RElbowYaw","RWristYaw"],
+       [[0.3],[1.2],[1.2],[1.65],[-0.15]],
+       [[1.0],[1.0],[1.0],[1.0],[1.0]],1)
+    motion.angleInterpolation(["RShoulderRoll","RShoulderPitch",
+       "RElbowRoll","RElbowYaw","RWristYaw"],
+       [[0.3],[1.2],[1.2],[1.65],[-0.9]],
+       [[1.0],[1.0],[1.0],[1.0],[1.0]],1)
+
+    time.sleep(2)
+
+    motion.angleInterpolation(["RWristYaw"],[0.4],[0.75],1)
+    motion.angleInterpolation(["HeadYaw","HeadPitch"],
+    	[[1.0],[0.5]],[[1.0],[1.0]],1)
+
+    time.sleep(3)
+    say("hit")
+
+    motion.angleInterpolation(["HeadYaw","HeadPitch"],
+    	[[0],[0]],[[1.0],[1.0]],1)
+\end{python}
 
 \subsection{Ballerkennung}
 
 Da der NAO bereits eine Funktion für die Erkennung eines roten Balls besitzt, nutzten wir diese direkt. Hierfür besorgten wir uns einen roten Plastikball und führten erste Versuche durch, um die Funktion für unsere Zwecke einsetzen zu können.
-Allerdings mussten wir hierbei einige Anpassungen vornehmen, weil die Kamera des NAO nur einen bestimmten Sichtbereich hat und der Bereich direkt vor dem Roboter nicht mehr sichtbar ist. Da wir deshalb das letzte Stück ''blind'' steuern mussten, kam es hierbei auch häufig zu Ungenauigkeiten beim Schlag. Daraus resultierte eine schwer zu kalkulierende Ballbewegung, für die wir auch erstmal keine Lösung fanden. Wir nahmen uns vor, diese Problemstellung zu einem späteren Zeitpunkt noch einmal zu bearbeiten und uns zunächst mal um die Erkennung des Zieles zu kümmern.
+Allerdings mussten wir hierbei einige Anpassungen vornehmen, weil die Kamera des NAO nur einen bestimmten Sichtbereich hat und der Bereich direkt vor dem Roboter nicht mehr sichtbar ist. Da wir deshalb das letzte Stück ''blind'' steuern mussten, kam es hierbei auch häufig zu Ungenauigkeiten beim Schlag. Daraus resultierte eine schwer zu kalkulierende Ballbewegung, für die wir auch erstmal keine Lösung fanden. Wir nahmen uns vor, diese Problemstellung zu einem späteren Zeitpunkt noch einmal zu bearbeiten und uns zunächst mal um die Erkennung des Zieles zu kümmern. Letztendlich wurde die Bewegung die die Lücke überbrückt so angepasst, dass der Unterschied der Entfernungen zum Ball bei verschiedenen Anläufen so klein ist, dass er zu vernachlässigen ist. 
+
+\begin{python}
+def trackBall():
+    lookDown()
+    # Add target to track
+    targetName = "RedBall"
+    diameterOfBall = 0.06
+    tracker.registerTarget(targetName, diameterOfBall)
+
+    # Set mode
+    mode = "Move"
+    tracker.setMode(mode)
+    tracker.setMaximumDistanceDetection(3.0)
+    tracker.setRelativePosition([-0.55,0,0,0.01,0.01,0.01])
+
+    tracker.setMoveConfig([["Frequency",0.005]])
+    # Start tracker
+    tracker.track(targetName)
+
+    global targetReached
+    while(not targetReached):
+        time.sleep(1)
+    targetReached = False
+    
+# Module for Balltracking
+class TrackerModule(ALModule):
+    def __init__(self, name):
+        ALModule.__init__(self, name)
+
+        memory.subscribeToEvent("ALTracker/TargetReached",
+            "Tracker",
+            "onTargetReached")
+
+    def onTargetReached(self, *_args):
+        print "Target reached"
+        tracker.stopTracker()
+        tracker.unregisterAllTargets()
+        #Walk remaining distance to ball
+        motion.moveTo(0.27,0.03,0,
+            [["MaxStepFrequency",0.01],["MaxStepX",0.025]])
+        global targetReached
+        targetReached = True
+    
+\end{python}
 
 \subsection{Zielen}
 
@@ -243,7 +314,123 @@ def turnToTarget(target):
  
 \subsection{Erkennen der Hindernisse}
 
-Für die Erkennung der Hindernisse nutzen wir die selbe Methode wie für die Zielerkennung. Für die Ermittlung der Positionen wurde die Bahn in drei Abschnitte geteilt: rechts, mitte und links.  Da sich das Sichtfeld des NAOs wie beim Menschen auch nach hinten hin verzerrt, musste zunächst eine Funktion zur Ermittlung der Abschnitte erstellt werden. 
+Für die Erkennung der Hindernisse nutzen wir die selbe Methode wie für die Zielerkennung. Für die Ermittlung der Positionen wurde die Bahn in drei Abschnitte geteilt: rechts, mitte und links.  Da sich das Sichtfeld des NAOs wie beim Menschen auch nach hinten hin verzerrt, musste zunächst eine Funktion zur Ermittlung der Abschnitte erstellt werden. Dabei wird je nach Entfernung eines Hindernisses die jeweilige Bahnbreite in Pixeln bestimmt.
+Diese wird dann durch drei geteilt um die Bahn in die entsprechenden Bereiche einzuteilen. Somit kann erkannt werden in welchen Bereichen sich die Hindernisse befinden und somit eine Entscheidung getroffen, in welche Richtung gespielt werden soll. Mit Hilfe der Zielfunktion wird dann je nach Aufstellung gegen die Bande auf Höhe eines Hindernisses oder geradeaus durch die Mitte geschlagen.
+
+\begin{python}
+#Get half of coursewidth
+def getWidth(height):
+    return 1.171484*height+7.923894 
+
+def aim():
+    print "aim"
+    global gr1
+    global gl1
+    global gr2
+    global gl2
+
+    gr1 = 80 + getWidth(oc1[1]/3)
+    gl1 = 80 - getWidth(oc1[1]/3)
+    gr2 = 80 + getWidth(oc2[1]/3)
+    gl2 = 80 - getWidth(oc2[1]/3)
+
+    if((oc1[0]<gl1 or oc1[0]>gr1) and 
+    	(oc2[0]<gl2 or oc2[0]>gr2)):
+           # play straight
+           turnToTarget([58.5,20])
+    elif(oc1[0]<gl1 and oc2[0]>=gl2 and oc2[0]<=gr2):
+           # play right to obstacle 2
+           turnToTarget([80+getWidth(oc2[1]),oc2[1]])
+    elif(oc1[0]>gr1 and oc2[0]>=gl2 and oc2[0]<=gr2):
+           # play left to obstacle 2
+           turnToTarget([80-getWidth(oc2[1]),oc2[1]])
+    elif(oc1[0]>=gl1 and oc1[0]<=gr1 and oc2[0]<gl2):
+           # play right to obstacle 1
+           turnToTarget([80+getWidth(oc1[1]),oc1[1]])
+    elif(oc1[0]>=gl1 and oc1[0]<=gr1 and oc2[0]>gr2):
+           # play left to obstacle 1
+           turnToTarget([80-getWidth(oc1[1]),oc1[1]])
+    else:
+           # play left to both obstacles
+           mid = (oc1[1] + oc2[1]) / 2
+           turnToTarget([80-getWidth(mid),mid])
+
+    time.sleep(2)
+    takeClub()
+    hit()
+    giveClub()
+    turn(turnTime,"anticlockwise")
+    checkObstacles()
+
+\end{python}
+
+\subsection{Weiterer Spielverlauf}
+
+Nach dem ersten Schlag bewegt sich der Roboter zunächst zurück in seine Ausgangsposition um den Ball zu lokalisieren. Danach wird überprüft ob der Ball an einem oder beiden Hindernissen vorbei gespielt wurde und ob er hinter einem Hindernis liegt oder nicht. Dementsprechend werden verschiedene Laufbewegungen ausgeführt, die den Roboter um die Hindernisse herum und zum Ball führen. Diese bestehen zum einen Teil aus dem automatischen RedBallTracker und zum anderen Teil aus manuellen Bewegungen. Gegebenenfalls wird erneut um ein Hindernis herum gespielt und gelaufen. Sobald dem Ziel nichts mehr im Weg steht wird mithilfe der Zielfunktion auf dieses gespielt. Nach dem Schlag wird überprüft ob der Ball noch zu sehen ist. Sollte dies der Fall sein, was bedeutet, dass verfehlt wurde, so wird das Spiel als verloren angesehen. Wenn der Ball sich im Loch befindet und nicht mehr zu sehen ist, ist die Aufgabe erfüllt. Dem Ergebnis entsprechend wird eine passende Audioausgabe abgespielt und das Programm beendet.  
+
+\begin{python}
+# Module after first shot
+class ObstacleModule2(ALModule):
+    def __init__(self,name):
+        ALModule.__init__(self,name)
+
+    def onBlobDetected(self,*_args):
+        memory.unsubscribeToEvent("ALTracker/ColorBlobDetected",
+        	"Obstacle2")
+        global oc1
+        global oc2
+        global bc
+
+        searchBall()
+        
+        if(oc1[1]>bc[1]):
+            print "hindernis 1 naeher als ball"
+            if(oc2[1]>bc[1]):
+                print "ball hinter hindernissen"
+                walkBetweenTargets(oc1,oc2)
+                avoidSecondObstacle()
+                searchGoal()
+                playGoal()
+            else:
+                walkToBallBetweenTargets(oc1,oc2)
+        else:
+            print "ball naeher als hindernisse"
+            
+
+\end{python} 
+
+Hätte der Ball beispielsweise nach dem ersten Schlag beide Hindernisse überwunden, würde der Roboter zunächst das erste Hindernis umlaufen, danach das zweite und schließlich das Ziel suchen und darauf zielen.
+
+Die nachfolgende Funktion zeigt, wie ein Hindernis umlaufen wird falls der Ball nicht dahinter liegt. In diesem Fall wird zunächst seitlich auf die Höhe des Balls gelaufen und dann der RedBallTracker eingesetzt um bis zum Ball zu laufen.
+
+Anhand der Entfernung des Balls wird zunächst die Bahnbreite auf dieser Höhe berechnet. Mithilfe der Koordinaten des Balls wird die prozentuale Entfernung des Balls von der Mitte in Abhängigkeit von der Bahnbreite ermittelt. Durch den Prozentsatz wird eine Zeit bestimmt, die der Roboter seitlich läuft.
+
+
+\begin{python}
+# Ball not behind obstacle
+def walkToBall():
+    print "walkToBall"
+    width = getWidth(bc[1])
+    global sec
+    global pos
+    if(bc[0]>80):
+        pos = 1
+        ballPixel = bc[0] - 80
+        percent = ballPixel/width
+        sec = 20*percent
+        moveSideways(sec,"right")
+
+    else:
+        pos = 2
+        ballPixel = 80 - bc[0]
+        percent = ballPixel/width
+        sec = 20*percent
+        moveSideways(sec,"left")
+
+    trackBall()
+\end{python}
+
+
 
 
 
