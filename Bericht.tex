@@ -8,6 +8,8 @@
 \usepackage{hyperref}
 \usepackage{pdfpages}
 
+
+
 \usepackage{listings}
 \lstset{numbers=left, numberstyle=\tiny, numbersep=5pt}
 \lstset{language=Python}
@@ -47,12 +49,78 @@ showstringspaces=false            %
 }
 {}
 
-\title{Dokumentation Softwareprojekt}
 
-\date{19. Juni 2016}
+
+
 \begin{document}
 
-\maketitle
+
+
+\thispagestyle{empty}
+\begin{center}
+\Large{Hochschule Bochum}\\
+\end{center}
+
+
+\begin{center}
+\Large{Fachbereich Elektrotechnik und Informatik}
+\end{center}
+\begin{verbatim}
+
+
+
+
+
+
+
+
+
+\end{verbatim}
+\begin{center}
+\textbf{\LARGE{Dokumentation}}
+\end{center}
+\begin{verbatim}
+
+
+\end{verbatim}
+\begin{center}
+\textbf{Softwareentwicklung mit NAO und ROS}
+\end{center}
+\begin{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{verbatim}
+
+\begin{flushleft}
+\begin{tabular}{lll}
+
+& & \\
+& & \\
+\textbf{eingereicht von:} & & Edgar Filipsen, Mika Katzwinkel, Jakob Kost,\\
+ & &  Hubert Richter, Sebastian Schreiter\\
+& & \\
+& & \\
+\textbf{eingereicht am:} & & 3. Februar 2017\\
+& & \\
+& & \\
+\textbf{Betreuer:} & & Frau Prof. Dr. rer. nat. Brabender,\\
+& & Dipl.-Ing. (FH) Andreas Koch
+\end{tabular}
+\end{flushleft}
+
+\newpage
 \tableofcontents
 \newpage
 
@@ -61,14 +129,16 @@ showstringspaces=false            %
 
 \subsection{Projektbeschreibung}
 
-Im Rahmen der Veranstaltung mussten wir uns, für die Bearbeitung von Softwareprojekten in Gruppen zusammenfinden. Anschließend musste sich jedes Team eine/n betreuende/n Professor/in suchen und mit dieser/m ein Projekt, zur Umsetzung innerhalb von 2 Semestern, planen und durchführen. Unser Team, bestehend aus Edgar Filipsen, Mika Katzwinkel, Jakob Kost, Hubert Richter und Sebastian Schreiter suchte sich Frau Prof. Dr. rer. nat. Brabender als betreuende Professorin aus.
+Im Rahmen der Veranstaltung mussten wir uns, für die Bearbeitung von Softwareprojekten in Gruppen zusammenfinden. Anschließend musste sich jedes Team eine/n betreuende/n Professor/in suchen und mit dieser/m ein Projekt, zur Umsetzung innerhalb von 2 Semestern, planen und durchführen. Unser Team, bestehend aus Edgar Filipsen, Mika Katzwinkel, Jakob Kost, Hubert Richter und Sebastian Schreiter suchte sich Frau Prof. Dr. rer. nat. Brabender und Dipl.-Ing. (FH) Andreas Koch als Betreuer aus.
 Da die Aufgabenstellung offen war, überlegten wir uns, dass der NAO Minigolf spielen soll. Dabei soll er Hindernisse selbstständig umspielen und schließlich ins Ziel treffen können.
 
 \section{Eingesetzte Tools/Werkzeuge}
 
 \subsection{ROS Indigo}
-Bei dem Robot Operation System handelt es sich um eine Open Source Framework, welches für die Steuerung von Robotern eingesetzt werden kann. 
-\subsection{RViz}
+Bei dem Robot Operation System handelt es sich um ein Open Source Framework, welches für die Steuerung von Robotern eingesetzt werden kann. Die Hauptaufgaben von ROS sind Hardwareabstraktion, das Bereitstellen von Gerätetreibern, Paketverwaltung und der Nachrichtenaustausch zwischen Programmen bzw. Programmteilen. Das System ist aufgeteilt in das eigentliche Betriebssystem ros und ros-pkg, eine Auswahl an Zusatzpaketen, die das Basissystem um einzelne Fähigkeiten erweitern. Hierzu gehört zum Beispiel auch das Visualisierungstool RViz, welches wir verwendeten, um die Schlagbewegung des Roboters im Vorfeld zu simulieren. Außerdem finden sich dort auch einige Pakete für den NAO-Roboter, die wir in unsere Entwicklung mit einbringen konnten. Insgesamt gibt es mehr als 4000 zusätzliche Pakete, die größtenteils von der ROS-Community erstellt wurden. Dabei wird eine Serviceorientierte Architektur eingesetzt, um die Kommunikation zwischen den einzelnen Komponenten zu ermöglichen.
+
+\subsection{Choreograph}
+Choreograph ist die Standard Entwicklungsumgebung für den NAO Roboter, die, wie der Roboter selbst, auch von Aldebaran stammt. Hierbei wird die Programmierung über ein intuitives Drag- and Dropsystem realisiert, wodurch es auch Einsteigern leicht fällt, komplexere Abläufe zu programmieren. Wir nutzten in unserem Projekt Choreograph anfangs, um zum Beispiel das ''RedBall Tracking'' für unsere Zwecke zu testen. Hierbei war es auch besonders hilfreich, dass man sich den Python Code der einzelnen Funktionen anzeigen lassen kann. Später nutzten wir die Entwicklungsumgebung allerdings hauptsächlich nur noch für die Anzeige des Kamerabildes, um die Handlungen des Roboters besser nachvollziehen zu können.
 
 \section{Eingesetzte Hardware}
 
@@ -431,16 +501,16 @@ def walkToBall():
 \end{python}
 
 
+\subsection{Entwicklung mit ROS}
+Da wir, wie oben bereits genannt, zur Entwicklung hauptsächlich ein einfaches Python Skript verwendeten, entschieden wir uns, nach Absprache mit Frau Brabender, dazu, die Entwicklung mit und ohne ROS separat zu behandeln, um die Unterschiede in der Handhabung darstellen zu können. Dabei wurde deutlich, dass die Integration des Codes in ROS schneller erledigt war, als erwartet und doch einige Möglichkeiten bietet. Ein grundlegender Unterschied bei der Integration von ROS war die Implementierung der Node Struktur von ROS. Hierbei werden die Funktionen in einer Node Klasse zusammengefasst, die als Objekt über ROS initialisiert werden kann. Sobald dieses dann erstellt wurde, dient es sozusagen als Grundstruktur für die Funktionalitäten und wird über ROS aufrecht erhalten. Anschließend kann dann über diverse ROS eigene Befehle auf die erstellten Dienste, Sender, Empfänger etc. zugegriffen werden. Außerdem hat man auch jederzeit eine gute Übersicht über die gesamte Struktur der unterschiedlichen Nodes und ihrer verfügbaren Dienste und kann sich diese sogar graphisch darstellen lassen.
+Bei der Integration war besonders darauf zu achten, dass die Node Klasse bereits einen Broker, welcher die Verbindung zum Roboter aufbaut, enthält, welcher nur noch mit IP und Port des Roboters gefüllt werden muss. Somit erübrigte sich auch die Erstellung eines separaten Brokers, wie vor der Integration.
+Als Ergebnis lässt sich zusammenfassen, dass die Integration von ROS einen sehr guten Überblick über die vorhandenen Funktionalitäten bietet und gerade bei unübersichtlichen, großen Projekten die Arbeit deutlich erleichtern kann. Zusätzlich wird auch eine einheitliche Struktur eingeführt, die auch bei der Arbeit mit anderen Robotern immer gleich bleibt. Bei unserem Projekt hatte die Integration von ROS allerdings wenig Einfluss, da das Projekt keinen so großen Umfang hatte und die Struktur von ROS hier kaum zum Einsatz kommen konnte.
 
-
-
-
-
-  
+\newpage
 \appendix 
-\section{Anhang}
 
-\includepdf[pages=1,pagecommand=\subsection{Minigolfbahn }]{MiniGolfBahn.pdf} 
+
+\includepdf[pages=1,pagecommand=\section{Anhang}\subsection{Minigolfbahn }]{MiniGolfBahn.pdf} 
 
 \includepdf[pages=1,pagecommand=\subsection{Schläger }]{Schlaeger.pdf} 
  
